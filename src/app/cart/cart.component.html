@@ -1,0 +1,84 @@
+<div class="container" *ngIf="product.length === 0">
+  <div class="row mx-auto w-50 p-5">
+    <div class="col-lg-12">
+      <div class="card">
+        <img
+          class="card-img-top"
+          src="https://img.freepik.com/free-vector/cart-basket-shopping-icons-finance_24911-45461.jpg?w=740&t=st=1697200790~exp=1697201390~hmac=e82b27d07fae548adbd331bf0dc7d1553d886e511cbcf492cfeb930fca31b615"
+          alt="Card image cap"
+        />
+        <div class="card-body d-flex flex-column align-items-center">
+          <h5 class="card-title">Your cart is empty</h5>
+          <p class="card-text">Delighted for your visit to our website</p>
+          <p class="card-text">
+            <button class="btn btn-primary" (click)="onselect()">
+              Shop Now
+            </button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container" *ngIf="product.length > 0">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-2 d-flex justify-content-center">
+        <button class="btn button-primary me-2 empty" (click)="removeall()">
+          EMPTY CART
+        </button>
+      </div>
+    </div>
+    <div class="row flex-row first-row">
+      <div class="col-lg-3 d-flex justify-content-center titles">
+        <p class="me-2 ms-3">Product</p>
+      </div>
+      <div class="col-lg-2 d-flex justify-content-center">
+        <p class="me-2">Quantity</p>
+      </div>
+      <div class="col-lg-2 d-flex justify-content-center">
+        <p class="me-2">Price</p>
+      </div>
+      <div class="col-lg-2 d-flex justify-content-center">
+        <p class="me-2">Category</p>
+      </div>
+      <div class="col-lg-2 d-flex justify-content-center">
+        <p class="me-2 ms-2">Remove</p>
+      </div>
+    </div>
+    <div class="row border-bottom" *ngFor="let po of product; let i = index">
+      <div class="col-lg-3">
+        <figure class="p-5 img-product">
+          <img [src]="po.thumbnail" />
+        </figure>
+      </div>
+      <div
+        class="col-lg-2 pt-5 d-flex justify-content-center align-items-center"
+      >
+        <button class="control" (click)="increase(po)">+</button>
+        <p>{{ po.quantity }}</p>
+        <button class="control" (click)="decrease(po)">-</button>
+      </div>
+      <div
+        class="col-lg-2 pt-5 d-flex justify-content-center align-items-center"
+      >
+        <p class="me-2">{{ po.total | currency }}</p>
+      </div>
+      <div
+        class="col-lg-1 pt-5 d-flex justify-content-center align-items-center"
+      >
+        <p class="ms-5">{{ po.category }}</p>
+        <!-- <p class="ms-5">{{ po.total | currency }}</p> -->
+      </div>
+      <div
+        class="col-lg-4 d-flex justify-content-center align-items-center pt-5"
+      >
+        <button class="button-control" (click)="remove(po)">Remove</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-1 ms-auto">
+    <h3>TOTAL</h3>
+    <p class="m-1">{{ bigtotal | currency }}</p>
+  </div>
+</div>

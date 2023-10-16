@@ -1,0 +1,19 @@
+img {
+  width: 100%;
+  height: 20%;
+}
+.smallphoto {
+  width: 100%;
+  height: 100%;
+}
+ngb-rating {
+  color: gold;
+  font-size: 1.2rem;
+}
+.disabled {
+  background-color: rgb(247, 240, 240);
+  color: white;
+}
+.btn-color {
+  background-color: rgb(171, 42, 252);
+}

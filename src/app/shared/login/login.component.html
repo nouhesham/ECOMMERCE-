@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+      <form #loginform="ngForm" (ngSubmit)="handlesubmitForm(loginform)">
+        <div class="form-group">
+          <label for="exampleInputEmail1" class="mt-3 mb-3"
+            >Email address</label
+          >
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Enter email"
+            name="email"
+            ngModel
+            required
+            #email="ngModel"
+          />
+        </div>
+        <div *ngIf="email.touched && !email.valid">
+          <span class="text-danger" *ngIf="email.errors?.['required']"
+            >Please enter your email</span
+          >
+          <span class="text-danger" *ngIf="email.errors?.['pattern']">
+            Write the right format</span
+          >
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1" class="mt-2 mb-3">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            placeholder="Password"
+            name="password"
+            ngModel
+            required
+            #loginform="ngModel"
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-primary mt-3"
+          [disabled]="!loginform.valid"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

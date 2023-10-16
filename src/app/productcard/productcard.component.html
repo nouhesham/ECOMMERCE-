@@ -1,0 +1,61 @@
+<div class="card" style="width: 18rem">
+  <div class="img-block">
+    <img [src]="singlecard.thumbnail" class="card-img-top" alt="photo" />
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">
+      {{ singlecard.title }}
+    </h5>
+    <p
+      class="card-text"
+      style="
+        overflow: hidden;
+        max-width: 100ch;
+        text-overflow: ellipsis;
+        white-space: no-wrap;
+        max-height: 1.5rem;
+      "
+    >
+      {{ singlecard.description }}
+    </p>
+    <p>
+      <span class="text-primary">Price:</span>{{ singlecard.price | currency }}
+    </p>
+    <p><span class="text-primary">Brand:</span>{{ singlecard.brand }}</p>
+    <div class="rating d-flex">
+      <p>
+        <span class="text-primary me-2">Rating:</span>{{ singlecard.rating }}
+      </p>
+      <ngb-rating
+        [(rate)]="singlecard.rating"
+        [max]="5"
+        [readonly]="true"
+      ></ngb-rating>
+    </div>
+
+    <div class="links d-flex">
+      <a class="nav-link">
+        <button
+          *ngIf="singlecard.stock > 0"
+          class="btn addtocart btn-color"
+          (click)="addtoCart(singlecard)"
+          [ngClass]="{ disabled: buttondisabled }"
+        >
+          Add to cart
+        </button></a
+      ><a class="nav-link">
+        <button *ngIf="singlecard.stock === 0" class="btn btn-danger" disabled>
+          outOfstock
+        </button></a
+      >
+      <a class="nav-link">
+        <button
+          class="btn btn-color ms-2"
+          [routerLink]="['/productdetails', singlecard.id]"
+        >
+          View-Details
+        </button></a
+      >
+    </div>
+  </div>
+</div>

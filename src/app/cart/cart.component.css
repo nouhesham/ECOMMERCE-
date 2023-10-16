@@ -1,0 +1,42 @@
+.control {
+  background-color: rgb(241, 118, 241);
+  border: none;
+  padding: 0.25rem;
+  color: white;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+}
+img {
+  width: 100%;
+}
+.first-row p {
+  font-size: 1.3rem;
+  color: black;
+}
+.img-product {
+  padding: 5rem;
+}
+a {
+  text-decoration: none;
+}
+.button-control {
+  font-size: 0.75rem;
+  border-radius: 2rem;
+  padding: 0.5rem 1rem;
+  background-color: rgb(122, 7, 148);
+  border: none;
+  color: white;
+}
+.titles p {
+  font-size: 1.2rem;
+}
+
+.empty {
+  background-color: rgb(77, 50, 85);
+  color: white;
+  padding: 0.5rem 1rem;
+  margin-left: 0;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  font-size: 0.8rem;
+}

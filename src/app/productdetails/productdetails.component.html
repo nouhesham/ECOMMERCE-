@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row pb-1">
+    <div class="col-lg-4">
+      <div class="image p-3"><img [src]="product.thumbnail" /></div>
+      <div class="row ps-5 w-100">
+        <div
+          class="col-lg-3 pe-1 pt-1 pb-3"
+          *ngFor="let image of product.images"
+        >
+          <img class="smallphoto" [src]="image" />
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8 p-4">
+      <h3>{{ product.title }}</h3>
+
+      <p>{{ product.description }}</p>
+      <div class="rating d-flex">
+        <p class="me-2">
+          <span class="fw-bold me-2">Rating:</span>{{ product.rating }}
+        </p>
+        <ngb-rating
+          [(rate)]="product.rating"
+          [max]="5"
+          [readonly]="true"
+        ></ngb-rating>
+      </div>
+
+      <div class="specialoffer d-flex">
+        <p>{{ product.price | currency }}</p>
+        <p *ngIf="product.price < 2000" class="text text-danger ps-2">
+          Special offer
+        </p>
+      </div>
+
+      <div *ngIf="product.stock === 0" class="btn btn-danger">outOfstock</div>
+      <div
+        *ngIf="product.stock > 0"
+        class="btn btn-color"
+        routerLink="/cart"
+        (click)="buy(product)"
+      >
+        Buy Now
+      </div>
+      <div
+        *ngIf="product.stock > 0"
+        class="btn btn-color ms-4"
+        (click)="addtocart(product)"
+        [ngClass]="{ disabled: disabledbutton }"
+      >
+        Add to cart
+      </div>
+    </div>
+  </div>
+</div>

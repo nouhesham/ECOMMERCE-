@@ -1,0 +1,144 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+      <form [formGroup]="registerform" (ngSubmit)="handlesubmit()">
+        <div class="form-group">
+          <label for="exampleInputName">Name:</label>
+          <input
+            type="Name"
+            class="form-control"
+            id="exampleInputName"
+            placeholder="Enter Name"
+            formControlName="Name"
+          />
+        </div>
+        <div
+          *ngIf="
+            registerform.controls['Name'].touched &&
+            registerform.controls['Name'].invalid
+          "
+        >
+          <span
+            class="text-danger"
+            *ngIf="registerform.controls['Name'].errors?.['required']"
+            >Please write your name</span
+          >
+        </div>
+
+        <div class="form-group mt-4">
+          <label for="exampleInputEmail1">Email address:</label>
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            placeholder="Enter email"
+            formControlName="email"
+          />
+        </div>
+        <div
+          *ngIf="
+            registerform.controls['email'].touched &&
+            registerform.controls['email'].invalid
+          "
+        >
+          <span
+            class="text-danger"
+            *ngIf="registerform.controls['email'].errors?.['required']"
+            >Please write your email</span
+          >
+        </div>
+        <div class="form-group mt-4">
+          <label for="exampleInputUsername">UserName:</label>
+          <input
+            type="name"
+            class="form-control"
+            id="exampleInputUsername"
+            aria-describedby="usernameHelp"
+            placeholder="Enter username"
+            formControlName="UserName"
+          />
+        </div>
+        <div
+          *ngIf="
+            registerform.controls['UserName'].touched &&
+            registerform.controls['UserName'].invalid
+          "
+        >
+          <span
+            class="text-danger"
+            *ngIf="registerform.controls['UserName'].errors?.['required']"
+            >Please write your Username</span
+          >
+          <span
+            class="text-danger"
+            *ngIf="registerform.controls['UserName'].errors?.['pattern']"
+            >Please leave no spaces</span
+          >
+        </div>
+
+        <div class="form-group mt-4">
+          <label for="exampleInputPassword1">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            placeholder="Password"
+            formControlName="password"
+          />
+        </div>
+        <div
+          *ngIf="
+            registerform.controls['password'].touched &&
+            registerform.controls['password'].invalid
+          "
+        >
+          <span
+            class="text-danger"
+            *ngIf="registerform.controls['password'].errors?.['required']"
+            >Please write your password</span
+          >
+          <span
+            class="text-danger"
+            *ngIf="registerform.controls['password'].errors?.['pattern']"
+            >Please write the right form</span
+          >
+        </div>
+        <div class="form-group mt-4">
+          <label for="exampleInputPassword1">Confirm Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            placeholder="Password"
+            formControlName="confirmpassword"
+          />
+        </div>
+        <div
+          *ngIf="
+            registerform.controls['confirmpassword'].touched &&
+            registerform.controls['confirmpassword'].invalid
+          "
+        >
+          <span
+            *ngIf="registerform.controls['confirmpassword'].errors?.['required']"
+            class="text-danger"
+            >This is required</span
+          >
+        </div>
+        <p
+          *ngIf="registerform.controls['confirmpassword'].touched && registerform.errors?.['passwordmatcherror']"
+          class="text-danger"
+        >
+          Passwords must match
+        </p>
+        <button
+          type="submit"
+          class="btn btn-primary mt-4"
+          [disabled]="!registerform.valid"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
