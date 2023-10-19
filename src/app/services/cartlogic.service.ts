@@ -6,7 +6,7 @@ import { Productinterface } from '../interface/productinterface';
   providedIn: 'root',
 })
 export class CartlogicService {
-  isinside!: number;
+  isinside!: {};
   cartitemlist: any[] = [];
   productsmenu = new BehaviorSubject<any>([]);
 
@@ -16,7 +16,7 @@ export class CartlogicService {
   }
   setProduct(product: any) {
     this.cartitemlist.push(product);
-    this.productsmenu.next(product);
+    this.productsmenu.next(this.cartitemlist);
   }
   addtoCart(product: any) {
     this.isinside = this.cartitemlist.find((po: any) => po.id === product.id);
