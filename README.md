@@ -24,3 +24,6 @@
 -created a cart where the user can increase and decrease the quantity of the product<br>
 
 </div>
+
+<h3>NOTE:YOU HAVE TO LOGIN TO SEE THE DETAILS OR THE CART </h3>
+
