@@ -26,5 +26,4 @@
 </div>
 
 <h3>NOTE:YOU HAVE TO LOGIN TO SEE THE DETAILS OR THE CART </h3>
-<a href="https://ecommerce-blush-ten.vercel.app"></a>
 
