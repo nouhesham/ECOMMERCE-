@@ -6,6 +6,7 @@ import { Productinterface } from '../interface/productinterface';
   providedIn: 'root',
 })
 export class CartlogicService {
+  isinside!: number;
   cartitemlist: any[] = [];
   productsmenu = new BehaviorSubject<any>([]);
 
@@ -18,10 +19,17 @@ export class CartlogicService {
     this.productsmenu.next(product);
   }
   addtoCart(product: any) {
-    this.cartitemlist.push(product);
-    this.productsmenu.next(this.cartitemlist);
-    this.gettoPrice();
+    this.isinside = this.cartitemlist.find((po: any) => po.id === product.id);
+    if (!this.isinside) {
+      this.cartitemlist.push(product);
+      this.productsmenu.next(this.cartitemlist);
+      this.gettoPrice();
+    }
   }
+  isinsidecart() {
+    return this.productsmenu.asObservable();
+  }
+
   gettoPrice(): number {
     let fulltotal = 0;
     this.cartitemlist.map((cart: any) => {

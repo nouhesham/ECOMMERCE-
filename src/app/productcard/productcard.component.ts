@@ -13,24 +13,29 @@ export class ProductcardComponent {
   productscart: Array<Productinterface> = [];
   constructor(private productservice: CartlogicService) {}
 
+  inside = false;
   ngOninit() {
-    this.productservice.getProduct().subscribe((data) => {
+    this.productservice.getProduct().subscribe((data: any) => {
       this.productscart = data;
     });
   }
-  buttondisabled = false;
 
   addtoCart(item: any) {
-    if (!this.buttondisabled) {
-      Object.assign(this.singlecard, { quantity: 1 });
-      item.total = item.price;
-      const inside = this.productscart.some((po: any) => po.id === item.id);
-      if (!this.buttondisabled && !inside) {
-        this.productservice.addtoCart(item);
-        this.buttondisabled = true;
-      }
-    }
+    Object.assign(this.singlecard, { quantity: 1 });
+    item.total = item.price;
+    this.productservice.addtoCart(item);
   }
+
+  // isdisabled(product: any): boolean {
+  //   let disabledbutton = false;
+  //   this.productservice
+  //     .isinsidecart()
+  //     .subscribe((insidepro: Productinterface[]) => {
+  //       disabledbutton = this.productscart.some((pro) => pro.id === product.id);
+  //     });
+  //   return disabledbutton;
+  // }
+
   // constructor(private router: Router) {}
 
   //we can also use a clickevent on the anchor inside the html

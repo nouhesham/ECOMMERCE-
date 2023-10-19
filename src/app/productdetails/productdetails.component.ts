@@ -22,23 +22,28 @@ export class ProductdetailsComponent {
   ngOnInit() {
     this.cardsService
       .GetCard(+this.activatedRoute.snapshot.params['id'])
-      .subscribe((data) => {
+      .subscribe((data: any) => {
         this.product = data;
       });
-    this.productservice.getProduct().subscribe((data) => {
+    this.productservice.getProduct().subscribe((data: any) => {
       this.productscart = data;
     });
   }
   isinside!: boolean;
   inside!: boolean;
-  disabledbutton = false;
+
   addtocart(item: Productinterface) {
-    this.isinside = this.productscart.some((po: any) => po.id == item.id);
-    if (!this.disabledbutton && !this.isinside) {
-      this.productservice.addtoCart(item);
-      this.disabledbutton = true;
-    }
-    this.disabledbutton = true;
+    this.productservice.addtoCart(item);
+  }
+
+  isdisabled(product: any): boolean {
+    let disabledbutton = false;
+    this.productservice
+      .isinsidecart()
+      .subscribe((insidepro: Productinterface[]) => {
+        disabledbutton = this.productscart.some((pro) => pro.id === product.id);
+      });
+    return disabledbutton;
   }
   buy(item: Productinterface) {
     Object.assign(item, { quantity: 1 });

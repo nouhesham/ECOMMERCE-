@@ -46,7 +46,7 @@
         *ngIf="product.stock > 0"
         class="btn btn-color ms-4"
         (click)="addtocart(product)"
-        [ngClass]="{ disabled: disabledbutton }"
+        [ngClass]="{ disabled: isdisabled }"
       >
         Add to cart
       </div>
