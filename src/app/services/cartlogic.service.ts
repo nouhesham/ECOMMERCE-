@@ -8,26 +8,26 @@ import { Productinterface } from '../interface/productinterface';
 export class CartlogicService {
   isinside!: {};
   cartitemlist: any[] = [];
-  productsmenu = new BehaviorSubject<any>([]);
+  productsMenu = new BehaviorSubject<any>([]);
 
   constructor() {}
   getProduct() {
-    return this.productsmenu.asObservable();
+    return this.productsMenu.asObservable();
   }
   setProduct(product: any) {
     this.cartitemlist.push(product);
-    this.productsmenu.next(this.cartitemlist);
+    this.productsMenu.next(this.cartitemlist);
   }
   addtoCart(product: any) {
     this.isinside = this.cartitemlist.find((po: any) => po.id === product.id);
     if (!this.isinside) {
       this.cartitemlist.push(product);
-      this.productsmenu.next(this.cartitemlist);
+      this.productsMenu.next(this.cartitemlist);
       this.gettoPrice();
     }
   }
   isinsidecart() {
-    return this.productsmenu.asObservable();
+    return this.productsMenu.asObservable();
   }
 
   gettoPrice(): number {
