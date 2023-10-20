@@ -40,3 +40,9 @@ a {
   margin-bottom: 3rem;
   font-size: 0.8rem;
 }
+
+@media (max-width: 576px) {
+  .DISPLAYED {
+    display: none;
+  }
+}
