@@ -41,8 +41,23 @@ a {
   font-size: 0.8rem;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 660px) {
   .DISPLAYED {
     display: none;
+  }
+  .width {
+    width: 100% !important;
+  }
+  .category {
+    display: none !important;
+  }
+  .button-control {
+    margin-bottom: 3rem;
+  }
+  .Flex {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    justify-content: center;
   }
 }

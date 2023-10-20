@@ -39,11 +39,11 @@ export class CartlogicService {
   }
   removeallcart() {
     this.cartitemlist = [];
-    this.productsmenu.next(this.cartitemlist);
+    this.productsMenu.next(this.cartitemlist);
   }
   removeitem(product: any) {
     let id = product.id;
     this.cartitemlist.splice(id, 1);
-    this.productsmenu.next(this.cartitemlist);
+    this.productsMenu.next(this.cartitemlist);
   }
 }

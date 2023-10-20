@@ -1,5 +1,5 @@
 <div class="container" *ngIf="product.length === 0">
-  <div class="row mx-auto w-50 p-5">
+  <div class="row mx-auto w-50 p-5 width">
     <div class="col-lg-12">
       <div class="card">
         <img
@@ -65,7 +65,7 @@
         <p class="me-2">{{ po.total | currency }}</p>
       </div>
       <div
-        class="col-lg-1 pt-5 d-flex justify-content-center align-items-center"
+        class="col-lg-1 pt-5 d-flex justify-content-center align-items-center category"
       >
         <p class="ms-5">{{ po.category }}</p>
         <!-- <p class="ms-5">{{ po.total | currency }}</p> -->
@@ -79,7 +79,7 @@
       </div>
     </div>
   </div>
-  <div class="col-lg-1 ms-auto">
+  <div class="col-lg-1 ms-auto Flex">
     <h3>TOTAL</h3>
     <p class="m-1">{{ bigtotal | currency }}</p>
   </div>
